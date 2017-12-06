@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 2.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Kyle Mehringer.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -110,6 +110,26 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+
+    window.continue_on_mouse_click()
+
+    start = rg.Point(rectangle.get_upper_right_corner().x, rectangle.get_upper_right_corner().y)
+    end = rg.Point(rectangle.get_lower_left_corner().x, rectangle.get_lower_left_corner().y)
+    line = rg.Line(start, end)
+    line.attach_to(window)
+    window.render()
+
+    window.continue_on_mouse_click()
+
+    circle.fill_color = rectangle.outline_color
+    window.render()
+
+
+
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -181,6 +201,19 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
+
+    rect.attach_to(win)
+    win.render()
+
+    center = rg.Point(rect.get_center().x, rect.get_center().y)
+    corner1 = rg.Point(rect.get_upper_left_corner().x, rect.get_upper_left_corner().y)
+    corner2 = rg.Point(rect.get_lower_right_corner().x, rect.get_lower_right_corner().y)
+
+    for _ in range(n - 1):
+        rect1 = rg.Rectangle(corner1)
+
+        height = height + 2 * delta
+        width = width + 2 * delta
 
 
 # ----------------------------------------------------------------------

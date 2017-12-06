@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 3.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Kyle Mehringer.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -103,6 +103,20 @@ def run_test_problem3a():
     # your choice), add 1 more test case of your own choosing.
     # ------------------------------------------------------------------
 
+    # Window 4:
+    title = 'Problem 3a. Test 1: Start at (30, 30), 6 lines'
+    window4 = rg.RoseWindow(350, 200, title)
+
+    # Test 5 (it is on window 1):
+    point = rg.Point(30, 30)
+    expected = 36
+    answer = problem3a(window4, point, 6)
+    print()
+    print('Test 1 expected:', expected)
+    print('       actual:  ', answer)
+
+    window4.close_on_mouse_click()
+
 
 def problem3a(window, point, n):
     """
@@ -145,6 +159,14 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # ------------------------------------------------------------------
+
+    end = rg.Point(point.x, point.y + 50)
+    line = rg.Line(point, end)
+    line.attach_to(window)
+    window.render()
+
+    for k in range(n - 1):
+        
 
 
 def run_test_problem3b():
