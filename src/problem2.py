@@ -205,15 +205,23 @@ def problem2b(rect, n, delta, win):
     rect.attach_to(win)
     win.render()
 
-    center = rg.Point(rect.get_center().x, rect.get_center().y)
     corner1 = rg.Point(rect.get_upper_left_corner().x, rect.get_upper_left_corner().y)
     corner2 = rg.Point(rect.get_lower_right_corner().x, rect.get_lower_right_corner().y)
 
-    for _ in range(n - 1):
-        rect1 = rg.Rectangle(corner1)
+    for k in range(n):
+        # corner1 = rg.Point(corner1.x - k * delta, corner1.y - k * delta)
+        # corner2 = rg.Point(corner2.x + k * delta, corner2.y + k * delta)
+        corner1 = rg.Point(corner1.x, corner1.y)
+        corner2 = rg.Point(corner2.x, corner2.y)
+        rect1 = rg.Rectangle(corner1, corner2)
+        rect1.attach_to(win)
 
-        height = height + 2 * delta
-        width = width + 2 * delta
+        corner1.x = corner1.x - delta
+        corner1.y = corner1.y - delta
+        corner1.x = corner1.x + delta
+        corner1.y = corner1.y + delta
+
+        win.render()
 
 
 # ----------------------------------------------------------------------

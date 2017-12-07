@@ -162,8 +162,8 @@
             line = rg.Line(point, end)
             line.attach_to(window)
             window.render()
-            changex =
-            changey =
+            changex = 20
+            changey = 10
 
             for k in range(n - 1):
                 line = line.clone()
