@@ -120,6 +120,7 @@ def problem2a(circle, rectangle, window):
     start = rg.Point(rectangle.get_upper_right_corner().x, rectangle.get_upper_right_corner().y)
     end = rg.Point(rectangle.get_lower_left_corner().x, rectangle.get_lower_left_corner().y)
     line = rg.Line(start, end)
+    line.arrow = 'last'
     line.attach_to(window)
     window.render()
 
@@ -127,8 +128,6 @@ def problem2a(circle, rectangle, window):
 
     circle.fill_color = rectangle.outline_color
     window.render()
-
-
 
 
 def run_test_problem2b():
@@ -193,7 +192,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -203,25 +202,20 @@ def problem2b(rect, n, delta, win):
     # ------------------------------------------------------------------
 
     rect.attach_to(win)
-    win.render()
 
     corner1 = rg.Point(rect.get_upper_left_corner().x, rect.get_upper_left_corner().y)
     corner2 = rg.Point(rect.get_lower_right_corner().x, rect.get_lower_right_corner().y)
 
-    for k in range(n):
-        # corner1 = rg.Point(corner1.x - k * delta, corner1.y - k * delta)
-        # corner2 = rg.Point(corner2.x + k * delta, corner2.y + k * delta)
-        corner1 = rg.Point(corner1.x, corner1.y)
-        corner2 = rg.Point(corner2.x, corner2.y)
-        rect1 = rg.Rectangle(corner1, corner2)
-        rect1.attach_to(win)
+    for _ in range(n):
 
-        corner1.x = corner1.x - delta
-        corner1.y = corner1.y - delta
-        corner1.x = corner1.x + delta
-        corner1.y = corner1.y + delta
+        rect = rg.Rectangle(corner1, corner2)
+        rect.attach_to(win)
+        corner1 = rg.Point(corner1.x - delta, corner1.y - delta)
+        corner2 = rg.Point(corner2.x + delta, corner2.y + delta)
+        print(rect.get_upper_right_corner())
+        print(rect.get_lower_left_corner())
 
-        win.render()
+    win.render()
 
 
 # ----------------------------------------------------------------------
