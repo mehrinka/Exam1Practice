@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 3.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Kyle Mehringer.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -105,12 +105,12 @@ def run_test_problem3a():
 
     # Window 4:
     title = 'Problem 3a. Test 5: Start at (30, 30), 6 lines'
-    window1 = rg.RoseWindow(350, 200, title)
+    window1 = rg.RoseWindow(500, 400, title)
 
     # Test 5 (it is on window 1):
-    point = rg.Point(30, 30)
-    expected = 36
-    answer = problem3a(window1, point, 6)
+    point = rg.Point(45, 50)
+    expected = 49
+    answer = problem3a(window1, point, 7)
     print()
     print('Test 5 expected:', expected)
     print('       actual:  ', answer)
@@ -163,21 +163,28 @@ def problem3a(window, point, n):
     changex = 20
     changey = 10
     thickness = 1
+    count = 0
 
-    for k in range(n - 1):
+    for k in range(n):
         point = rg.Point(point.x, point.y)
         end = rg.Point(point.x, point.y + 50)
         line1 = rg.Line(point, end)
+        line1.thickness = thickness
+
+        if thickness >= 13:
+            thickness = 13
+
         line1.attach_to(window)
-
-        if k <= 7:
-            line1.thickness = thickness + 2
-
         point.x = point.x + changex
         point.y = point.y + changey
         end.x = end.x + changex
         end.y = end.x + changey
         window.render()
+        count = count + thickness
+        thickness = thickness + 2
+
+
+    return count
 
 
 def run_test_problem3b():
@@ -195,8 +202,6 @@ def run_test_problem3b():
     print()
     print('Test 2 expected:', expected)
     print('       actual:  ', answer)
-
-
 
 
 def run_test_problem3b():
@@ -266,6 +271,9 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # ------------------------------------------------------------------
+
+    window = rg.RoseWindow(400, 650)
+    
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
