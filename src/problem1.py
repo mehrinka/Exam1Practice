@@ -26,6 +26,7 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 ########################################################################
 import math
 
+
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_problem1a()
@@ -126,14 +127,14 @@ def run_test_problem1a():
     # ------------------------------------------------------------------
 
     # Test 3:
-    expected = 1.7507  # This is APPROXIMATELY the correct answer.
+    expected = 1.13508  # This is APPROXIMATELY the correct answer.
     answer = problem1a(1, 2)
     print()
     print('Test 3 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
 
     # Test 4:
-    expected = -0.55236  # This is APPROXIMATELY the correct answer.
+    expected = 0.063321  # This is APPROXIMATELY the correct answer.
     answer = problem1a(-2, 3)
     print()
     print('Test 4 expected:', expected, '(approximately)')
@@ -158,7 +159,7 @@ def problem1a(m, n):
       -- If m is 30 and n is 100, the correct answer is about 1.278.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -168,8 +169,8 @@ def problem1a(m, n):
     # ------------------------------------------------------------------
 
     answer = 0
-    for k in range(n ** 2 - m **2 + 1):
-        answer = answer + math.sin(n ** 2 + k)
+    for k in range((n ** 2) - (m ** 2) + 1):
+        answer = answer + math.sin((m ** 2) + k)
     return answer
 
 
